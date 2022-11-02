@@ -14,16 +14,21 @@ jobs:
       matrix:
         include:
           - os: macos-latest
+            commandRemoveVariables: unset ANDROID_SDK_ROOT
             commandTest: ./solipath gradle build
             commandInstrumentedTest: ./solipath gradle pixel2api30DebugAndroidTest
           - os: ubuntu-latest
+            commandRemoveVariables: unset ANDROID_SDK_ROOT
             commandTest: ./solipath gradle build
             commandInstrumentedTest: ./solipath gradle pixel2api30DebugAndroidTest
           - os: windows-latest
+            commnadRemoveVariables: set ANDROID_SDK_ROOT=
             commandTest: .\solipath gradle build
             commandInstrumentedTest: .\solipath gradle pixel2api30DebugAndroidTest
     steps:
       - uses: actions/checkout@v2
+      - name: Unset variables
+        run: ${{matrix.commandRemoveVariables}}
       - name: Run update
         run: ${{matrix.commandTest}}
       - name: Run tests
