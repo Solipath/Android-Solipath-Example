@@ -15,10 +15,15 @@ You can accept them using the following command, and following the prompts
 ```
 
 The solipath.json file in solipath_idea includes intellij community edition, 
-so you can start it by running the following inside the solipath_idea directory
-```bash
-../solipath idea ..
+so you can start it by running the following inside the solipath_idea directory if you are on windows
+```cmd
+..\solipath idea ..
 ```
+or this if you are on mac or linux
+```bash
+../solipath idea.sh ..
+```
+
 
 If you have an existing android project, all you should need to do is copy the solipath, solipath.bat (once it is there), and the solipath.json files over to your project.
 
