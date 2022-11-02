@@ -15,11 +15,11 @@ jobs:
         include:
           - os: macos-latest
             commandTest: unset ANDROID_SDK_ROOT && ./solipath gradle build
-            commandAcceptLicenses: unset ANDROID_SDK_ROOT && ./solipath yes | sdkmanager --licenses
+            commandAcceptLicenses: unset ANDROID_SDK_ROOT && yes | ./solipath sdkmanager --licenses
             commandInstrumentedTest: unset ANDROID_SDK_ROOT && ./solipath gradle pixel2api30DebugAndroidTest
           - os: ubuntu-latest
             commandTest: unset ANDROID_SDK_ROOT && ./solipath gradle build
-            commandAcceptLicenses: unset ANDROID_SDK_ROOT && ./solipath yes | sdkmanager --licenses
+            commandAcceptLicenses: unset ANDROID_SDK_ROOT && yes | ./solipath sdkmanager --licenses
             commandInstrumentedTest: unset ANDROID_SDK_ROOT && ./solipath gradle pixel2api30DebugAndroidTest
           - os: windows-latest
             commandTest: set ANDROID_SDK_ROOT= && .\solipath gradle build
