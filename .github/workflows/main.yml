@@ -15,16 +15,16 @@ jobs:
         include:
           - os: macos-latest
             commandTest: unset ANDROID_SDK_ROOT && ./solipath gradle build
-            commandAcceptLicenses: unset ANDROID_SDK_ROOT && ./solipath sdkmanager --licenses
+            commandAcceptLicenses: unset ANDROID_SDK_ROOT && ./solipath sdkmanager --licenses || true
             commandInstrumentedTest: unset ANDROID_SDK_ROOT && ./solipath gradle pixel2api30DebugAndroidTest
           - os: ubuntu-latest
             commandTest: unset ANDROID_SDK_ROOT && ./solipath gradle build
-            commandAcceptLicenses: unset ANDROID_SDK_ROOT && ./solipath sdkmanager --licenses
+            commandAcceptLicenses: unset ANDROID_SDK_ROOT && yes | ./solipath sdkmanager --licenses || true
             commandInstrumentedTest: unset ANDROID_SDK_ROOT && ./solipath gradle pixel2api30DebugAndroidTest
           - os: windows-latest
-            commandTest: $Env:ANDROID_SDK_ROOT="" && .\solipath gradle build
-            commandAcceptLicenses: $Env:ANDROID_SDK_ROOT="" && .\solipath sdkmanager --licenses
-            commandInstrumentedTest: $Env:ANDROID_SDK_ROOT="" && .\solipath gradle pixel2api30DebugAndroidTest
+            commandTest: setx ANDROID_SDK_ROOT="" && .\solipath gradle build
+            commandAcceptLicenses: setx ANDROID_SDK_ROOT="" && .\solipath sdkmanager --licenses
+            commandInstrumentedTest: setx ANDROID_SDK_ROOT="" && .\solipath gradle pixel2api30DebugAndroidTest
     steps:
       - uses: actions/checkout@v2
       - name: run gradle build to identify licenses
