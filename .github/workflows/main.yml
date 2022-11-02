@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            commandTest: ./solipath gradle build
+            commandInstrumentedTest: ./solipath gradle pixel2api30DebugAndroidTest
+          - os: ubuntu-latest
+            commandTest: ./solipath gradle build
+            commandInstrumentedTest: ./solipath gradle pixel2api30DebugAndroidTest
+          - os: windows-latest
+            commandTest: .\solipath gradle build
+            commandInstrumentedTest: .\solipath gradle pixel2api30DebugAndroidTest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run update
+        run: ${{matrix.commandTest}}
+      - name: Run tests
+        run: ${{matrix.commandInstrumentedTest}}

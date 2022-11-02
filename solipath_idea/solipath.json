@@ -1,0 +1,6 @@
+[
+	{"name": "java", "version": "11"},
+	{"name": "gradle", "version": "7.5.1"},
+	{"name": "android-sdk", "version": "latest"},
+	{"name": "intellij-community", "version": "2022.2.3"}
+]
