@@ -23,7 +23,7 @@ jobs:
             commandInstrumentedTest: ./solipath gradle pixel2api30DebugAndroidTest
           - os: windows-latest
             commandTest: .\solipath gradle build
-            commandAcceptLicenses: ls ~\solipath\android-sdk\downloads\android\;ls ~\solipath\android-sdk\downloads\android\cmdline-tools; .\solipath sdkmanager.bat --licenses
+            commandAcceptLicenses: yes | .\solipath sdkmanager.bat --licenses
             commandInstrumentedTest: .\solipath gradle pixel2api30DebugAndroidTest
     steps:
       - uses: actions/checkout@v2
